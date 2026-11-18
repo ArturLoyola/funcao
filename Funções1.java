@@ -1,17 +1,38 @@
-package exercicio02;
+package exercicio01;
 
-public class Exercicio02 {
-    public static void main(String[] args) {
-        int[][] m = new int[3][3];
-        int soma = 0;
+import java.util.Scanner;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                m[i][j] = Integer.parseInt(IO.readln("Digite um número: "));
-                soma = soma + m[i][j];
-            }
+public class Main {
+
+    public static int contarDigitos(int numero){
+        int contagem = 0;
+
+        while(numero > 0){
+            numero = numero / 10;
+            contagem++;
         }
 
-        IO.println("Soma: " + soma);
+        return contagem;
+    }
+
+    public static void exibirDigitos(int[] numeros){
+        for(int i = 0; i < 5; i++){
+            System.out.println(numeros[i] + " tem " + contarDigitos(numeros[i]) + " digito(s)");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] numeros = new int[5];
+
+        for(int i = 0; i < 5; i++){
+            System.out.print("Digite um numero: ");
+            numeros[i] = sc.nextInt();
+        }
+
+        exibirDigitos(numeros);
+
+        sc.close();
     }
 }
