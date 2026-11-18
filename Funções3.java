@@ -1,17 +1,47 @@
-package exercicio02;
+package exercicio03;
 
-public class Exercicio02 {
-    public static void main(String[] args) {
-        int[][] m = new int[3][3];
-        int soma = 0;
+import java.util.Scanner;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                m[i][j] = Integer.parseInt(IO.readln("Digite um número: "));
-                soma = soma + m[i][j];
+public class Main {
+
+    public static boolean ehPrimo(int numero){
+        if(numero <= 1){
+            return false;
+        }
+
+        for(int i = 2; i < numero; i++){
+            if(numero % i == 0){
+                return false;
             }
         }
 
-        IO.println("Soma: " + soma);
+        return true;
+    }
+
+    public static void exibirPrimos(int[] numeros){
+        System.out.print("Primos: ");
+
+        for(int i = 0; i < 8; i++){
+            if(ehPrimo(numeros[i])){
+                System.out.print(numeros[i] + " ");
+            }
+        }
+
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] numeros = new int[8];
+
+        for(int i = 0; i < 8; i++){
+            System.out.print("Digite um numero: ");
+            numeros[i] = sc.nextInt();
+        }
+
+        exibirPrimos(numeros);
+
+        sc.close();
     }
 }
