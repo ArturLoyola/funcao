@@ -1,17 +1,47 @@
-package exercicio02;
+package exercicio07;
 
-public class Exercicio02 {
-    public static void main(String[] args) {
-        int[][] m = new int[3][3];
-        int soma = 0;
+import java.util.Scanner;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                m[i][j] = Integer.parseInt(IO.readln("Digite um número: "));
-                soma = soma + m[i][j];
-            }
+public class Main {
+
+    public static String inverter(String texto){
+        String invertido = "";
+
+        for(int i = texto.length() - 1; i >= 0; i--){
+            invertido = invertido + texto.charAt(i);
         }
 
-        IO.println("Soma: " + soma);
+        return invertido;
+    }
+
+    public static boolean ehPalindromo(String texto){
+        texto = texto.replace(" ", "").toLowerCase();
+
+        return texto.equals(inverter(texto));
+    }
+
+    public static void exibirResultado(String frase){
+        if(ehPalindromo(frase)){
+            System.out.println(frase + " e palindromo");
+        }else{
+            System.out.println(frase + " nao e palindromo");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] frases = new String[3];
+
+        for(int i = 0; i < 3; i++){
+            System.out.print("Digite uma frase: ");
+            frases[i] = sc.nextLine();
+        }
+
+        for(int i = 0; i < 3; i++){
+            exibirResultado(frases[i]);
+        }
+
+        sc.close();
     }
 }
