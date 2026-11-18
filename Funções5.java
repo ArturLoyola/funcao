@@ -1,17 +1,42 @@
-package exercicio02;
+package exercicio05;
 
-public class Exercicio02 {
-    public static void main(String[] args) {
-        int[][] m = new int[3][3];
-        int soma = 0;
+import java.util.Scanner;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                m[i][j] = Integer.parseInt(IO.readln("Digite um número: "));
-                soma = soma + m[i][j];
+public class Main {
+
+    public static int contarVogais(String texto){
+        int contagem = 0;
+        texto = texto.toLowerCase();
+
+        for(int i = 0; i < texto.length(); i++){
+            char letra = texto.charAt(i);
+
+            if(letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u'){
+                contagem++;
             }
         }
 
-        IO.println("Soma: " + soma);
+        return contagem;
+    }
+
+    public static void exibirContagem(String[] frases){
+        for(int i = 0; i < 3; i++){
+            System.out.println(frases[i] + " tem " + contarVogais(frases[i]) + " vogais");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] frases = new String[3];
+
+        for(int i = 0; i < 3; i++){
+            System.out.print("Digite uma palavra ou frase: ");
+            frases[i] = sc.nextLine();
+        }
+
+        exibirContagem(frases);
+
+        sc.close();
     }
 }
