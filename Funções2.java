@@ -1,17 +1,38 @@
 package exercicio02;
 
-public class Exercicio02 {
-    public static void main(String[] args) {
-        int[][] m = new int[3][3];
-        int soma = 0;
+import java.util.Scanner;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                m[i][j] = Integer.parseInt(IO.readln("Digite um número: "));
-                soma = soma + m[i][j];
-            }
+public class Main {
+
+    public static int inverterNumero(int numero){
+        int invertido = 0;
+
+        while(numero > 0){
+            invertido = invertido * 10 + numero % 10;
+            numero = numero / 10;
         }
 
-        IO.println("Soma: " + soma);
+        return invertido;
+    }
+
+    public static void exibirInvertidos(int[] numeros){
+        for(int i = 0; i < 5; i++){
+            System.out.println(numeros[i] + " ao contrario: " + inverterNumero(numeros[i]));
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] numeros = new int[5];
+
+        for(int i = 0; i < 5; i++){
+            System.out.print("Digite um numero: ");
+            numeros[i] = sc.nextInt();
+        }
+
+        exibirInvertidos(numeros);
+
+        sc.close();
     }
 }
