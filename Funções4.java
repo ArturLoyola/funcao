@@ -1,17 +1,49 @@
-package exercicio02;
+package exercicio04;
 
-public class Exercicio02 {
+import java.util.Scanner;
+
+public class Main {
+
+    public static double calcularImc(double peso, double altura){
+        return peso / (altura * altura);
+    }
+
+    public static String classificarImc(double imc){
+        if(imc < 18.5){
+            return "Abaixo do peso";
+        }else if(imc < 25){
+            return "Peso normal";
+        }else if(imc < 30){
+            return "Sobrepeso";
+        }else{
+            return "Obesidade";
+        }
+    }
+
+    public static void exibirRelatorio(double[] pesos, double[] alturas){
+        for(int i = 0; i < 4; i++){
+            double imc = calcularImc(pesos[i], alturas[i]);
+
+            System.out.printf("Pessoa %d: IMC %.2f - %s%n", i + 1, imc, classificarImc(imc));
+        }
+    }
+
     public static void main(String[] args) {
-        int[][] m = new int[3][3];
-        int soma = 0;
+        Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                m[i][j] = Integer.parseInt(IO.readln("Digite um número: "));
-                soma = soma + m[i][j];
-            }
+        double[] pesos = new double[4];
+        double[] alturas = new double[4];
+
+        for(int i = 0; i < 4; i++){
+            System.out.print("Peso da pessoa " + (i + 1) + ": ");
+            pesos[i] = sc.nextDouble();
+
+            System.out.print("Altura da pessoa " + (i + 1) + ": ");
+            alturas[i] = sc.nextDouble();
         }
 
-        IO.println("Soma: " + soma);
+        exibirRelatorio(pesos, alturas);
+
+        sc.close();
     }
 }
